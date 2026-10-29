@@ -1,0 +1,21 @@
+{
+  "name": "video-insight-pack",
+  "version": "1.0.0",
+  "description": "Turn any video into insights, a mind map, an illustrated article, flashcards and a key-frame gallery in one shareable HTML page.",
+  "author": {
+    "name": "Ewvue",
+    "url": "https://github.com/Ewvue"
+  },
+  "homepage": "https://github.com/Ewvue/video-insight-pack",
+  "repository": "https://github.com/Ewvue/video-insight-pack",
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "youtube",
+    "summary",
+    "mind-map",
+    "flashcards",
+    "notes",
+    "study"
+  ]
+}

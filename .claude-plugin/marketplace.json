@@ -1,0 +1,17 @@
+{
+  "name": "ewvue-plugins",
+  "owner": {
+    "name": "Ewvue",
+    "url": "https://github.com/Ewvue"
+  },
+  "plugins": [
+    {
+      "name": "video-insight-pack",
+      "source": "./",
+      "description": "Turn any video into insights, a mind map, an illustrated article, flashcards and a key-frame gallery in one shareable HTML page."
+    }
+  ],
+  "metadata": {
+    "description": "Plugins by Ewvue"
+  }
+}

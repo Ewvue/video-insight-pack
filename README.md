@@ -60,7 +60,17 @@ One HTML page (light/dark, mobile-friendly, no build step) with four tabs:
 2. **Settings → Capabilities → Skills → Upload skill**.
 3. Paste a video link and ask away.
 
-### Claude Code
+### Claude Code (plugin, recommended)
+
+```bash
+claude plugin marketplace add Ewvue/video-insight-pack
+claude plugin install video-insight-pack@ewvue-plugins
+pip install youtube-transcript-api imageio-ffmpeg
+```
+
+Update later with `claude plugin update video-insight-pack@ewvue-plugins`.
+
+### Claude Code (plain skill folder)
 
 ```bash
 git clone https://github.com/Ewvue/video-insight-pack ~/.claude/skills/video-insight-pack
@@ -136,6 +146,7 @@ scripts/                     fetch_transcript.py · extract_frames.py · build_p
 assets/                      template.html (the page) · browser-capture.js
 references/                  content schema · article & flashcard writing guides · frame capture
 examples/muse/               a full content.json you can build right away
+.claude-plugin/              plugin + marketplace manifests for `claude plugin install`
 dist/                        packaged .skill for one-click install
 ```
 

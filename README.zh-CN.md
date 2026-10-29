@@ -62,7 +62,17 @@
 
 > 注意：`.skill` 是压缩包，用文本编辑器打开会显示乱码，这是正常的，直接上传即可。
 
-### Claude Code
+### Claude Code（插件方式，推荐）
+
+```bash
+claude plugin marketplace add Ewvue/video-insight-pack
+claude plugin install video-insight-pack@ewvue-plugins
+pip install youtube-transcript-api imageio-ffmpeg
+```
+
+以后用 `claude plugin update video-insight-pack@ewvue-plugins` 更新。
+
+### Claude Code（直接放进 skills 文件夹）
 
 ```bash
 git clone https://github.com/Ewvue/video-insight-pack ~/.claude/skills/video-insight-pack

@@ -123,6 +123,12 @@ def main():
     open(out, "w", encoding="utf-8").write(html)
     size_kb = os.path.getsize(out) // 1024
 
+    # soft limits from SKILL.md / article-writing.md: warn, don't fail
+    h2 = sum(1 for b in d["article"]["blocks"] if b.get("type") == "h2")
+    for label, n, lo, hi in (("insights", len(d["insights"]), 3, 6), ("mind-map branches", len(d["mindmap"]["branches"]), 6, 10),
+                             ("article h2 sections", h2, 5, 9), ("flashcards", len(d.get("flashcards", [])), 12, 25)):
+        if n and not lo <= n <= hi:
+            print(f"warning: {n} {label} (guide: {lo}-{hi}); consider merging or trimming", file=sys.stderr)
     figs = len(d.get("figures", []))
     print(f"wrote {out} ({size_kb} KB) · {len(d['insights'])} insights · "
           f"{len(d['mindmap']['branches'])} branches · {len(d['article']['blocks'])} article blocks · "

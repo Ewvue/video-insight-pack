@@ -24,13 +24,15 @@ Write all output in the user's language (if they write Chinese, everything is in
 - **YouTube**: `python3 scripts/fetch_transcript.py <url-or-id> --out <work>/transcript.md` (installs nothing itself; needs `pip install youtube-transcript-api`). It writes timestamped ~60-second paragraphs. Use `--lang zh-Hans,en` to choose languages.
 - **Local subtitle file** (.srt / .vtt): `python3 scripts/fetch_transcript.py path/to/file.srt --out <work>/transcript.md`.
 - **Local video without subtitles**: ask whether the user has a subtitle file; otherwise transcribe with a local tool they already have (e.g. whisper) — say what you're running before you run it.
-- Also collect title, channel/author, length, publish date and the chapter list (YouTube puts chapters in the description; in a browser, `ytInitialPlayerResponse.videoDetails` has title, author, lengthSeconds and shortDescription).
+- Also collect title, channel/author, length, publish date and the chapter list. Without a browser, YouTube's oEmbed endpoint (`https://www.youtube.com/oembed?url=<video-url>&format=json`) gives title and channel; the transcript's last timestamp gives the length. In a browser, `ytInitialPlayerResponse.videoDetails` also has the description with chapters.
 
 Read the whole transcript before writing. Long videos: read it in parts, but read all of it — the best material is often in the last third.
 
 ### 2. Understand before writing
 
 Work out: the speaker(s) and their stake, the central question, the structure (use the chapters), the claims with evidence, the claims without evidence, and what the video avoids answering. That last part is what turns a summary into insight — include a short, fair "critical reading" in the article.
+
+If the host or a guest is never named in the video or its title/description, call them by role (主持人, 嘉宾) and don't fill in a name from your own knowledge; if you identify someone by inference, say so in `source_note`.
 
 Auto-generated transcripts have no speaker labels. With two or more guests, check who said what from context (names, "my daughter", who was asked the question) before attributing a story or opinion; misattribution is the most common factual error in these packs.
 
@@ -76,7 +78,17 @@ Follow **`references/content-schema.md`** exactly (it has a complete example). G
 
 **Quoting**: paraphrase. Keep direct quotes short (a sentence at most) and few.
 
-### 6. Build the page
+**Tone**: write like a person who watched the video and is telling a friend about it. Read **`references/style-guide.md`** before drafting; it lists the patterns that make text read as machine-written (翻案句「不是…而是…」, 破折号, 「值得注意的是」, inflated words, dramatic closers…) and how to fix each without changing facts.
+
+### 6. Self-edit for AI tone
+
+```bash
+python3 scripts/check_style.py <work>/content.json
+```
+
+Fix every STRONG hit with the matching rule in the style guide, then look at weak hits only where several cluster in one paragraph. Re-check each changed sentence against the transcript: same facts, same attribution, same certainty. A hit is a prompt to look, not a verdict; leave a sentence that is accurate and already reads well. Run the check again until no strong hits remain, and mention the before/after counts in your final message.
+
+### 7. Build the page
 
 ```bash
 python3 scripts/build_page.py <work>/content.json --frames <work>/frames --out <work>/site
@@ -84,7 +96,7 @@ python3 scripts/build_page.py <work>/content.json --frames <work>/frames --out <
 
 This writes `site/index.html` plus `site/img/` (frames copied under ASCII names). Add `--inline` to embed the images into a single self-contained HTML file (bigger, but one file to send). The page has four tabs — 洞察与导图 / 文章 / 记忆卡片 / 关键画面 (labels follow `lang`) — and works in light and dark mode and on phones.
 
-### 7. Deliver
+### 8. Deliver
 
 - If an Artifact/publish tool is available, build with `--fragment` (the host adds its own page skeleton) and publish `site/index.html` with each `img/*` file as a supporting file, so the user gets a link they can share.
 - Otherwise open or send `site/index.html`.

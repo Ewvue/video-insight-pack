@@ -31,6 +31,7 @@ A one-hour talk usually contains five ideas, three charts and a couple of number
 - **Doesn't waste time on talking heads.** It checks first whether a video has anything worth capturing; for a podcast or interview it skips screenshots and **draws its own diagrams and tables** from what was said.
 - **Separates claims from facts.** "5M downloads in 22 days" becomes *"according to a news clip shown in the video…"*, never an invented statistic.
 - **Adds a critical reading** — what the speaker sidestepped, which claims lack evidence.
+- **Doesn't sound like AI.** A style guide distilled from open-source "humanizer" skills plus a checker script flag 「不是…而是」 reversals, dashes, filler openers and inflated words in Chinese and English; Claude fixes them before building the page, without changing a single fact.
 - **Turns it into flashcards** so you still remember it next week.
 
 ## What you get
@@ -142,7 +143,7 @@ The content format is documented in [`references/content-schema.md`](references/
 
 ```
 SKILL.md                     the workflow Claude follows
-scripts/                     fetch_transcript.py · extract_frames.py · build_page.py
+scripts/                     fetch_transcript.py · extract_frames.py · check_style.py · build_page.py
 assets/                      template.html (the page) · browser-capture.js
 references/                  content schema · article & flashcard writing guides · frame capture
 examples/muse/               a full content.json you can build right away

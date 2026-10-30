@@ -75,6 +75,8 @@
 
 Generated visuals (`diagram`, `table`) are drawn by the page itself, so they work with or without captured frames. Use `flow` for processes and timelines (3–6 items), `layers` for hierarchies and levels (bottom item = first), `compare` for 2–4 options side by side; keep `text` to one short line. Tables: 2–5 columns, up to ~8 rows.
 
+Before building, run `scripts/check_style.py content.json` (see `style-guide.md`).
+
 Rules the script enforces (it exits with a clear message otherwise):
 - every `figure` block id exists in `figures`;
 - every `figures[].file` exists in the `--frames` folder;

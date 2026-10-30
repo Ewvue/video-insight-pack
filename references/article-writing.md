@@ -19,7 +19,7 @@ Length scales with substance, not minutes: roughly 1,500–2,500 Chinese charact
 - **Paraphrase**: short direct quotes only where the exact wording matters (≤ 1 sentence, a few per article).
 - **Diagrams and tables**: when the speaker lays out a framework, a sequence, a timeline or a comparison, draw it as a `diagram` or `table` block. Aim for 2–4 per article; they matter most when the video itself has no graphics.
 - **Figures**: put a figure right after the paragraph it illustrates, with a caption that tells the reader what to notice ("越往右越依赖事前审批"), not just a label. Two related frames can sit side by side in one figure block. 4–7 figures in the article; the rest live in the gallery.
-- **Plain language**: short sentences, no filler phrases, explain jargon once in passing.
+- **Plain language**: short sentences, no filler phrases, explain jargon once in passing. The patterns to avoid, with fixes, are in `style-guide.md`; `scripts/check_style.py` finds them.
 
 ## Mind map vs article vs cards
 
